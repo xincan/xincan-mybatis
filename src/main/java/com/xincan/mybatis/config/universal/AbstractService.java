@@ -1,11 +1,8 @@
 package com.xincan.mybatis.config.universal;
 
-import com.xincan.utils.exception.ServiceException;
-import org.apache.ibatis.exceptions.TooManyResultsException;
 import org.springframework.beans.factory.annotation.Autowired;
 import tk.mybatis.mapper.entity.Condition;
 
-import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
@@ -124,8 +121,8 @@ public abstract class AbstractService<T> implements IXincanService<T> {
 	 * @param recoed
 	 * @return T
 	 */
-	/*@Override
+	@Override
 	public T selectOne(T recoed){
 		return mapper.selectOne(recoed);
-	}*/
+	}
 }

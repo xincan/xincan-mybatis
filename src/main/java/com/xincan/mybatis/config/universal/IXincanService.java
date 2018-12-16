@@ -1,6 +1,5 @@
 package com.xincan.mybatis.config.universal;
 
-import org.apache.ibatis.exceptions.TooManyResultsException;
 import tk.mybatis.mapper.entity.Condition;
 
 import java.util.List;
@@ -79,5 +78,5 @@ public interface IXincanService<T> {
      * @return T
      * @Description: 根据实体中的属性值进行查询，查询条件使用等号
      */
-    /*T selectOne(T record);*/
+    T selectOne(T record);
 }
