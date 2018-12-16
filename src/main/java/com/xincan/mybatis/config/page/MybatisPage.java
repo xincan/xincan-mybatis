@@ -25,10 +25,10 @@ public class MybatisPage {
         if(map.containsKey("page") && map.containsKey("limit")){
             int p = Integer.parseInt(map.get("page").toString());
             int s = Integer.parseInt(map.get("limit").toString());
-            MybatisPage.page = (p-1) * s;
+            MybatisPage.page = p;
             MybatisPage.limit = s;
         }
-        return new int[]{MybatisPage.page,MybatisPage.limit};
+        return new int[]{MybatisPage.page, MybatisPage.limit};
     }
 
     /**
@@ -39,9 +39,9 @@ public class MybatisPage {
      */
     public static int[] getPageSize(int page, int size){
         if(size>0){
-            MybatisPage.page = (page-1) * size;
+            MybatisPage.page = (page-1)*size;
             MybatisPage.limit = size;
         }
-        return new int[]{MybatisPage.page,MybatisPage.limit};
+        return new int[]{MybatisPage.page, MybatisPage.limit};
     }
 }

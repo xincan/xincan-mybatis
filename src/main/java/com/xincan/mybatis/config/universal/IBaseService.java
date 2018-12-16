@@ -1,5 +1,6 @@
 package com.xincan.mybatis.config.universal;
 
+import org.apache.ibatis.exceptions.TooManyResultsException;
 import tk.mybatis.mapper.entity.Condition;
 
 import java.util.List;
@@ -9,60 +10,77 @@ import java.util.List;
  * @author JiangXincan
  * @date 2018/4/18 11:25
  */
-public interface IXincanService<T> {
+public interface IBaseService<T> {
 
     /**
-     * 添加对象信息
      * @param model
-     * @return Integer
+     * @Description: 持久化
+     * @Reutrn Integer
      */
     Integer insert(T model);
 
     /**
-     * 根据主键id删除对应对象
      * @param id
-     * @return Integer
+     * @Description: 通过主鍵刪除
+     * @Reutrn Integer
      */
     Integer deleteById(String id);
 
     /**
      * @param ids
-     * @Description: 根据一批id，批量刪除 eg：ids -> “1,2,3,4”
+     * @Description: 批量刪除 eg：ids -> “1,2,3,4”
      * @Reutrn Integer
      */
     Integer deleteByIds(String ids);
 
     /**
      * @param model
-     * @Description: 更新对象信息，传入对象必须有对象主键id
+     * @Description: 更新
      * @Reutrn Integer
      */
     Integer update(T model);
 
     /**
      * @param id
-     * @Description: 根据主键id查询对应对象信息
+     * @Description: 通过ID查找
      * @Reutrn T
      */
     T selectById(String id);
 
     /**
+     * @param fieldName
+     * @param value
+     * @throws TooManyResultsException
+     * @Description: 通过Model中某个成员变量名称（非数据表中column的名称）查找,value需符合unique约束
+     * @Reutrn T
+     */
+    T selectBy(String fieldName, Object value) throws TooManyResultsException;
+
+    /**
+     * @param fieldName javabean定义的属性名，不是数据库里的属性名
+     * @param value
+     * @Description: 通过Model中某个成员变量名称（非数据表中column的名称）查找
+     * @Reutrn List<T>
+     */
+    List<T> selectListBy(String fieldName, Object value);
+
+    /**
      * @param ids
-     * @Description: 根据一批主键id查询对应对象信息集合，例如（"1,2,3"）
+     * @Description: 通过多个ID查找//eg：ids -> “1,2,3,4”
      * @Reutrn List<T>
      */
     List<T> selectListByIds(String ids);
 
     /**
-     * 根据条件查找一批对象信息
      * @param condition
-     * @return List<T>
+     * @Description: 根据条件查找
+     * @Reutrn List<T>
      */
     List<T> selectByCondition(Condition condition);
 
     /**
-     * 查询所有对象信息
-     * @return List<T>
+     * @Description: 获取所有
+     * @Reutrn List<T>
      */
     List<T> selectAll();
 
@@ -79,4 +97,5 @@ public interface IXincanService<T> {
      * @Description: 根据实体中的属性值进行查询，查询条件使用等号
      */
     T selectOne(T record);
+
 }

@@ -8,12 +8,12 @@ import java.util.Date;
 /**
  * 默认BaseQuery 包含分页、排序条件
  * 
- * @ClassName: BaseQuery
+ * @ClassName: MySQLBaseQuery
  * @author Jiangxincan
  * @date 2018年3月1日 下午3:28:37 
  * @version 1.0
  */
-public class BaseQuery implements Serializable {
+public class MySQLBaseQuery implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -47,11 +47,11 @@ public class BaseQuery implements Serializable {
     @ApiModelProperty(name="endTime",value="结束时间", dataType = "Date")
     private Date endTime;
 
-    public BaseQuery() {
+    public MySQLBaseQuery() {
         super();
     }
 
-    public BaseQuery(Integer page, Integer limit, String sortName, String sortOrder, Date startTime, Date endTime) {
+    public MySQLBaseQuery(Integer page, Integer limit, String sortName, String sortOrder, Date startTime, Date endTime) {
         this.page = page;
         this.limit = limit;
         this.sortName = sortName;

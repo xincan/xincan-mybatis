@@ -7,7 +7,7 @@ import com.alibaba.fastjson.JSON;
  * @author JiangXincan
  * @date 2018/4/18 11:28
  */
-public class XincanModel {
+public class BaseModel {
 
     @Override
     public String toString(){
